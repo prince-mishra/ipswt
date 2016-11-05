@@ -2,7 +2,7 @@
 {% block content %}
     <form method="POST">
         {% csrf_token %}
-        <p>Paste bulk create info.</p>
+        <p>In the format TRACKING_ID_1 | INFO_1, TRACKING_ID_2 | INFO_2</p>
         <textarea name="bulk-create-paste">
         </textarea>
         <input type="submit" value="Submit" />

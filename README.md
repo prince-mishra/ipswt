@@ -1,6 +1,17 @@
-RUN
-===
-1. venv/python manage.py createsuperuser
-2. venv/python manage.py runserver
-3. open browser
-4. add the syncevents command to cron/scheduler
+Install
+=======
+1. Install Python (2.7 preferred)
+2. Install pip
+3. pip install -r requirements.txt
+
+Run for first time
+==================
+
+1. python manage.py migrate
+2. python manage.py createsuperuser
+3. python manage.py runserver
+
+Update and running later
+========================
+1. python manage.py migrate
+2. python manage.py runserver
