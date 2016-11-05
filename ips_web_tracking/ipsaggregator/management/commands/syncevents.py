@@ -15,7 +15,7 @@ class Command(BaseCommand):
         for s in open_shipments:
             identifier = s.identifier
             query_url = QUERY_URL % identifier
-            r = requests.get(query_url)
+            r = requests.get(query_url, timeout=20)
             html_doc = r.content
             soup = BeautifulSoup(html_doc, 'html.parser')
             tables = soup.find_all('table')
@@ -39,14 +39,14 @@ class Command(BaseCommand):
                 }
                 existing = ShipmentEvent.objects.filter(shipment_id = s.id, event_time = event_time)
                 if len(existing):
-                    self.stdout.write(self.style.ERROR(row_obj))
+                    pass#self.stdout.write(self.style.ERROR(row_obj))
                 else:
                     ev = ShipmentEvent(**row_obj)
                     ev.save()
                     if 'Deliver item' in event_type:
                         s.processed = True
                         s.save()
-                    self.stdout.write(self.style.SUCCESS(row_obj))
+                    #self.stdout.write(self.style.SUCCESS(row_obj))
 
 
 

@@ -6,10 +6,11 @@ from django.db import models
 
 
 class Shipment(models.Model):
-    identifier = models.CharField(max_length=255)
+    identifier = models.CharField(max_length=255, unique=True, db_index=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     processed = models.BooleanField(default = False)
+    info = models.CharField(max_length=4096, default='', blank=True, null=True)
 
     def __str__(self):
         return self.identifier
