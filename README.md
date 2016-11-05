@@ -15,3 +15,7 @@ Update and running later
 ========================
 1. python manage.py migrate
 2. python manage.py runserver
+
+Scheduling Shipment Update
+==========================
+1. Add "python manage.py syncevents" to your system's scheduler'
